@@ -34,7 +34,7 @@ export class CityWeather implements INodeType{
                 displayName: 'City',
                 name: 'CityName',
                 type: 'string',
-                default: ''
+                default: '',
                 placeholder: 'honolulu',
                 required: true,
                 description: 'The name of the city to return of the weather of',
