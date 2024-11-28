@@ -28,68 +28,79 @@ export class CityWeather implements INodeType{
                 'Content-Type': 'application/json',
             },
         },
-        properties: [
-            // Resources and operations will go here
-            {
-                displayName: 'City',
-                name: 'CityName',
-                type: 'string',
-                default: '',
-                placeholder: 'honolulu',
-                required: true,
-                description: 'The name of the city to return of the weather of',
-                routing: {
-                    request: {
-                        qs: {
-                            q: '={{$value}}',
-                        },
-                    },
-                },
-            },      
-        {
-            displayname: 'Adicional Fields',
-            name: 'adicionalFields',
-            type:'collection',
-            default: {},
-            placeholder: 'Add field',
-            options: [
+
+
+            properties: [
                 {
-                    displayName: 'Format',
-                    name:  'format',
-                    type:'options',
-                    options:[
-                        {
-                            name:  'Imperial',
-                            label:  'imperial',
-                            description: 'Fahrenheit | miles/hour',
-                        },
-                        {
-                            name:  'Metric',
-                            label:  'metric',
-                            description:  'Celsius | meters/sec',
-                        },
-                        {
-                            name: 'Scientific',
-                            label:'standar',
-                            description:  'Kelvin  | meters/sec',
-                         },
-                     ],
-                 },
-                 {
-                    displayName:'Language',
-                    name:'language',
-                    type:'string',
-                    default:'',
-                    placeholder: 'en',
-                    description: 'The two letter language code to use for the response. Default is  English, which will use the units specified in your location setting.',
-                    routing:{
-                        request:{
-                            qs:{
-                              lang:'={{$value}}'
+                    displayName: 'City',
+                    name: 'CityName',
+                    type: 'string',
+                    default: '',
+                    placeholder: 'honolulu',
+                    required: true,
+                    description: 'The name of the city to return of the weather of',
+                    routing: {
+                        request: {
+                            qs: {
+                                q: '={{$value}}',
                             },
                         },
                     },
-                  },
+                },      
+            {
+                displayName: 'Adicional Fields',
+                name: 'adicionalFields',
+                type:'collection',
+                default: {},
+                placeholder: 'Add field',
+                options: [
+                    {
+                        displayName: 'Format',
+                        name:  'format',
+                        type:'options',
+                        noDataExpression: true,
+                        options:[
+                            {
+                                name:  'Imperial',
+                                value:  'imperial',
+                                description: 'Fahrenheit | miles/hour',
+                            },
+                            {
+                                name:  'Metric',
+                                value:  'metric',
+                                description:  'Celsius | meters/sec',
+                            },
+                            {
+                                name: 'Scientific',
+                                value:'standar',
+                                description:  'Kelvin  | meters/sec',
+                            },
+                        ],
+                        default:'metric',
+                        description: 'The format in which format the data should be returned',
+                        routing: {
+                            request: {
+                                qs: {
+                                    units:  '={{$value}}',
+                                },
+                            },
+                        },
+                    },
+                    {
+                        displayName:'Language',
+                        name:'language',
+                        type:'string',
+                        default:'',
+                        placeholder: 'en',
+                        description: 'The two letter language code to use for the response. Default is  English, which will use the units specified in your location setting.',
+                        routing:{
+                            request:{
+                                qs:{
+                                lang:'={{$value}}'
+                                },
+                            },
+                        },
+                    },
                 ],
             },
         ],
